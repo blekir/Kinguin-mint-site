@@ -1,0 +1,146 @@
+.info-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+}
+.orange-strip{
+    background-color: #f64b14;
+    height:250px;
+    width:100%;
+    font-size: 3.2em;
+    font-weight: 800;
+    color: #fff;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.reborn{
+    color: #ffdb22;
+    padding-left:14px;
+    /* width:100vw; */
+}
+.slider{
+    height:300px;
+
+}
+.traits{
+    height:400px;
+    width:100%;
+    background-image: url("../images/traits-info.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+.trait{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:0px 5em;
+}
+.padded{
+    padding-top: 52px;
+}
+.t1{
+    /* font-size: 1.4em; */
+    font-size: 1.4vw;
+    color:#fff;
+    font-weight: 900;
+    text-align: center;
+}
+.t2{
+    font-size:5vw;
+    color:#f64b14;
+    font-weight: 900;
+}
+.transparent{
+    opacity:0;
+}
+.gif-section{
+    height:658px;
+    width:100%;
+    background-image: url("../images/gif-section-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap:100px;
+    flex-wrap: wrap;
+}
+.gif{
+    height:400px;
+    width:400px;
+    background-image: url("../images/kinguin.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.text-row{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:500px;
+    gap:70px;
+    
+}
+.text1{
+    font-size:1.1vw
+}
+.joinDiscord{
+    font-size: 1.4em;
+    border-radius: 10px;
+    
+    background-color: #f64b14;
+    /* background-image: url("../images/connect_bg.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    border:2px solid #ffdb22;
+    color:#ffffff;
+}
+.joinDiscord:enabled:hover{
+    /* background-image: url("../images/connect_bg.png"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #f64b14;
+    color:#ffffff;
+    /* box-shadow: none; */
+}
+@media screen and (max-width: 800px) {
+    .t1{
+        font-size: 3vw;
+    }
+    .menu{
+        font-size: 6vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .gif-section{
+        height:800px;
+    }
+    .text1{
+        font-size:1.4vw
+    }
+}

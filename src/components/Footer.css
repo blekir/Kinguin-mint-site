@@ -1,0 +1,12 @@
+.footer-container{
+    background-image: url("../images/footer.png");
+    height:128px;
+    width:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    position: absolute;
+    /* bottom:0px; */
+    
+    z-index: 999;
+}

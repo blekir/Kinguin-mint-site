@@ -1,0 +1,74 @@
+.mint{
+    height:800px;
+    width:100vw;
+    background-image: url("../images/mint-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+.mintBtn{
+    font-size: 0.8em;
+    border-radius: 5px;
+    padding:5px 45px;
+    background-color: #ffcc00;
+    border:none;
+    color:#3b2774;
+    box-shadow: none;
+}
+.mintBtn:enabled:hover{
+    background-color: #ffcc00;
+    color:#3b2774;
+    box-shadow: none;
+}
+
+.text{
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.supply{
+    font-size: 1.6em;
+    
+    color:#f64b14;
+}
+.description{
+    font-size: 20px;
+    width: 38vw;
+    padding-bottom: 40px;
+    position: relative;
+    left:17vw;
+    margin-top:-100px
+}
+.counter{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 0px;
+}
+.counterBtn{
+    font-size: 0.8em;
+    border-radius: 5px;
+    
+    background-color: #ffcc00;
+    border:none;
+    color:#ffffff;
+    box-shadow: none;
+}
+.counterBtn:enabled:hover{
+    background-color: #ffcc00;
+    color:#ffffff;
+    box-shadow: none;
+}
+.value{
+    background-color: #f64b14;
+    padding: 10px 20px;
+    margin: 0px 5px;
+    border-radius: 10px;
+    color:#fff;
+    box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+}
