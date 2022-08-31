@@ -121,7 +121,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
             // ])
             console.log(wallet)
             // API CALL TO MINT
-            const response = await fetch(`http://localhost:8081/mint?account=${wallet}&amount=${amount}`,{
+            const response = await fetch(`http://206.189.21.200//mint?account=${wallet}&amount=${amount}`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
