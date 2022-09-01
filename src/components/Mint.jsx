@@ -20,7 +20,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
     const [amount, setamount] = useState(1)
 
     const getSupply = async() => {
-        const response = await fetch(`http://206.189.21.200/supply`,{
+        const response = await fetch(`https://206.189.21.200/supply`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
@@ -121,7 +121,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
             // ])
             console.log(wallet)
             // API CALL TO MINT
-            const response = await fetch(`http://206.189.21.200/mint?account=${wallet}&amount=${amount}`,{
+            const response = await fetch(`https://206.189.21.200/mint?account=${wallet}&amount=${amount}`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
