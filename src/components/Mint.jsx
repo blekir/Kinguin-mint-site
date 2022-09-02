@@ -7,6 +7,7 @@ import MetamaskOnboarding from 'metamask-onboarding'
 import "./Mint.css"
 
 import { Button } from 'primereact/button'
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, setImxConnected}) => {
     
@@ -18,6 +19,8 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
     const [welcomeMessage, setWelcomeMessage] = useState()
     const [supply, setsupply] = useState(0)
     const [amount, setamount] = useState(1)
+    const [success, setSuccess] = useState(false)
+    const [processing, setProcessing] = useState(false)
 
     const getSupply = async() => {
         const response = await fetch(`https://206.189.21.200/supply`,{
@@ -107,6 +110,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
     
     
     const transfer = async() =>{
+        setProcessing(true)
         try{
             const price = 0.001 * amount
 
@@ -127,9 +131,14 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
                         }
                 });
             const data = await response.json()
+
             if(data.status == "success"){
-                alert(data.msg)
-                console.log(data.ids)
+                setTimeout(function(){
+                    setSuccess(true)
+                    console.log(data.ids)
+                    console.log("success")
+                    setProcessing(false)
+                },5000)
             }
 
         }catch(error) {
@@ -181,28 +190,42 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
                     <div className='text flex column centered'>CONNECT TO IMX</div>
                     <Button label={walletLabel} style={{"fontWeigth":"600"}} className="p-button-raised connectWallet"  onClick={connectWallet} disabled={connectDisabled}/>
                 </div>
-                :<>
-                    <div className='text flex column centered full'>
-                        {/* <div className="supply-label">SUPPLY:</div> */}
-                        <div className="supply">{supply} / 1999</div>
-                        <div className="counter">
-                            <Button label="-" style={{"fontWeigth":"600"}} className="p-button-raised counterBtn"  onClick={() => count(false)}/>
-                            <div className="value">{amount}</div>
-                            <Button label="+" style={{"fontWeigth":"600"}} className="p-button-raised counterBtn"  onClick={() => count(true)}/>
+                :!success
+                    ?!processing
+                        ?<>
+                            <div className='text flex column centered full'>
+                                {/* <div className="supply-label">SUPPLY:</div> */}
+                                <div className="supply">{supply} / 1999</div>
+                                <div className="counter">
+                                    <Button label="-" style={{"fontWeigth":"600"}} className="p-button-raised counterBtn"  onClick={() => count(false)}/>
+                                    <div className="value">{amount}</div>
+                                    <Button label="+" style={{"fontWeigth":"600"}} className="p-button-raised counterBtn"  onClick={() => count(true)}/>
 
+                                </div>
+                                <Button label="MINT" style={{"fontWeigth":"600"}} className="p-button-raised mintBtn"  onClick={transfer}/>
+                                <div className="empty"></div>
+                                
+                            </div>
+                            
+                            <div className="description">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+                            </div>
+                        </>
+                        :<div className='text flex column centered full'>
+                            <ProgressSpinner/>
+                            <div className="processing-msg">PROCESSING</div>
                         </div>
-                        <Button label="MINT" style={{"fontWeigth":"600"}} className="p-button-raised mintBtn"  onClick={transfer}/>
-                        <div className="empty"></div>
-                        
+                    :<div className='text flex column centered full'>
+                        <div className="supply">Congratulations </div>
+                        <div className="sucess-msg">you've successfuly minted your KINGUIN LEGENDS token{amount >1 ? "s": ""}</div>
+                        <div className='success-btns'>
+                            <Button label="VIEW TOKENS" style={{"fontWeigth":"600"}} className="p-button-raised mintBtn"  onClick={() => {window.open("https://market.ropsten.immutable.com/inventory", "_blank")}}/>
+                            <Button label="MINT MORE" style={{"fontWeigth":"600"}} className="p-button-raised mintBtn"  onClick={() => {setSuccess(false)}}/>
+                        </div>
                     </div>
-                    
-                    <div className="description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                    </div>
-                </>
         }
         </div>
     )
