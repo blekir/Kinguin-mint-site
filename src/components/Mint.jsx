@@ -23,7 +23,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
     const [processing, setProcessing] = useState(false)
 
     const getSupply = async() => {
-        const response = await fetch(`https://206.189.21.200/supply`,{
+        const response = await fetch(`https://api.stellartycoon.io/supply`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
@@ -125,7 +125,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
             // ])
             console.log(wallet)
             // API CALL TO MINT
-            const response = await fetch(`https://206.189.21.200/mint?account=${wallet}&amount=${amount}`,{
+            const response = await fetch(`https://api.stellartycoon.io/mint?account=${wallet}&amount=${amount}`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
