@@ -11,7 +11,10 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 
 const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, setImxConnected}) => {
     
-    
+    // test enviroment variables
+    const apiURL = "https://api.stellartycoon.io"; // mint API url
+    const fundsRecieverAddress = "0xdec1918237964309786Fc42a4CEC786Ab911d8F3"; // wallet address that should recieve funds from min
+    const basePrice = 0.001; // single token price
     
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [wallet, setWallet] = useState()
@@ -23,7 +26,7 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
     const [processing, setProcessing] = useState(false)
 
     const getSupply = async() => {
-        const response = await fetch(`https://api.stellartycoon.io/supply`,{
+        const response = await fetch(`${apiURL}/supply`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
@@ -112,20 +115,19 @@ const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, 
     const transfer = async() =>{
         setProcessing(true)
         try{
-            const price = 0.001 * amount
+            const price = basePrice * amount
 
             // // funds transfer
-            // await link.transfer([
-            //     {
-            //         amount: price.toString(),
-            //         type: ETHTokenType.ETH,
-            //         toAddress: '0xdec1918237964309786Fc42a4CEC786Ab911d8F3' // receiver of this asset
-            //     },
-            //     // add more transfer objects if necessary, they don't have to be for the same asset type
-            // ])
+            await link.transfer([
+                {
+                    amount: price.toString(),
+                    type: ETHTokenType.ETH,
+                    toAddress: fundsRecieverAddress 
+                },
+            ])
             console.log(wallet)
             // API CALL TO MINT
-            const response = await fetch(`https://api.stellartycoon.io/mint?account=${wallet}&amount=${amount}`,{
+            const response = await fetch(`${apiURL}/mint?account=${wallet}&amount=${amount}`,{
                 method: "GET",
                 headers: {"accept": "application/json",
                         }
