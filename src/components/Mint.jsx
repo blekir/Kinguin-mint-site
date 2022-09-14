@@ -11,7 +11,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 
 const Mint = ({link, client, setBlockedDocument, blockedDocument, imxConnected, setImxConnected}) => {
     
-    // test enviroment variables
+    // test variables
     const apiURL = "https://api.stellartycoon.io"; // mint API url
     const fundsRecieverAddress = "0xdec1918237964309786Fc42a4CEC786Ab911d8F3"; // wallet address that should recieve funds from min
     const basePrice = 0.001; // single token price

@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+## INFO 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Mint site test deployment:** [LINK](https://kinguin-mint-site.pages.dev/)
 
-## Available Scripts
+### GitHub Repositories:
+[Mint site](https://github.com/blekir/Kinguin-mint-site)
+[Mint API](https://github.com/blekir/KINGUIN-MINT-API)
+[ImmutableX examples repo with pre-config scripts:](https://github.com/immutable/imx-examples)
 
-In the project directory, you can run:
 
-### `npm start`
+## TODO before production deployment:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    - deploy bridge contract
+    - upload images to IPFS or other custom location and obtain the url 
+    -change the image url in each metadata json file, keep in mind that the files can’t have json extension in order to be appropriately processed by IMX metadata crawler
+    -upload metadata json 
+    -create the project on IMX
+    -create a collection on IMX 
+    -add metadata scheme 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    * **MINT SITE:**
+        change IMX link and API urls in src/App.js
+        - uncomment lines 21 and 22
+        - comment lines 23 and 24
 
-### `npm test`
+        change variables values in src/Mint.jsx
+        - apiURL - url to deployed mint API on your end ( line 15)
+        - fundRecieverAddress - wallet address that should receive funds from mint ( line 16)
+        - basePrice - single token price ( line 17)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    * **MINT API:**
+        create Alchemy / Infura or any other Ethereum node provider account and obtain the API key(required for initialization of ethers provider )
 
-### `npm run build`
+        change variables values in .env file in root directory:
+            - `RPC_PROVIDER` - Ethereum node provider endpoint url 
+            - `MINTER_PRIVATE_KEY` - registered minter for your contract
+            - `PUBLIC_API_URL` - url to production one (remove ropsten  from url )
+            - `STARK_CONTRACT_ADDRESS` - IMX core contract address to mainnet (0x5FDCCA53617f4d2b9134B29090C87D01058e27e9)
+            - `REGISTRATION_CONTRACT_ADDRESS`  - IMX registration contract address to mainnet (0x72a06bf2a1CE5e39cBA06c0CAb824960B587d64c) 
+            - `TOKEN_ADDRESS` - bridge contract address registered by Immutable 
+            - `ROYALTIES_RECIEVER_ADDRESS` - wallet address that will receive royalties 
+            - `ROYALTIES_VALUE` - royalties values 
+            - `MINT_FUNDS_RECIEVER` - wallet address that should recieve funds from mint
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
